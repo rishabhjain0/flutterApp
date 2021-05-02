@@ -1,3 +1,6 @@
+import 'package:designings/language_screen.dart';
+import 'package:designings/signin_screen.dart';
+
 import './signup_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -18,6 +21,11 @@ class MyApp extends StatelessWidget {
       home: Scaffold(
           body: SignupForm(),
       ),
+      initialRoute: '/',
+      routes: {
+        '/signin':(context)=>SigninScreen(),
+        '/languageScreen':(context)=>LanguageScreen(),
+      },
     );
   }
 }
