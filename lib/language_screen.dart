@@ -1,5 +1,3 @@
-import 'dart:ffi';
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:country_provider/country_provider.dart';
@@ -13,7 +11,7 @@ class LanguageScreen extends StatefulWidget {
 class _LanguageScreenState extends State<LanguageScreen> {
   List countryList;
 
-  Future<Void> getAllCountries() async {
+  Future<void> getAllCountries() async {
     List countryLis = await CountryProvider.getAllCountries();
     setState(() {
       countryList = countryLis;
@@ -120,6 +118,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     padding:
                         EdgeInsets.symmetric(horizontal: 100, vertical: 15),
                     child: ElevatedButton(
+                      onPressed: () {},
                       child: Text('Continue'),
                       style: ButtonStyle(
                           shape: MaterialStateProperty.all(
@@ -130,15 +129,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                 ],
               )
             : Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height,
-                      child: Image.asset('assets/images/progress.jpg',height: MediaQuery.of(context).size.height,),
-                    ),
-                  ],
-                ),
+                child: CircularProgressIndicator(),
               ),
       ),
     );

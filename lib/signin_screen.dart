@@ -1,12 +1,12 @@
-import 'package:designings/signup_screen.dart';
 import 'package:flutter/material.dart';
 
 class SigninScreen extends StatelessWidget {
-  void navigateToLanguageScreen(ctx){
+  void navigateToLanguageScreen(ctx) {
     Navigator.of(ctx).pushNamed('/languageScreen');
   }
-  Widget textStyling1(String label){
-    return  Text(
+
+  Widget textStyling1(String label) {
+    return Text(
       label,
       style: TextStyle(
         fontSize: 14,
@@ -14,7 +14,8 @@ class SigninScreen extends StatelessWidget {
       ),
     );
   }
-  Widget textFieldStyling1(String label){
+
+  Widget textFieldStyling1(String label) {
     return TextField(
       decoration: InputDecoration(
         contentPadding: EdgeInsets.only(left: 30),
@@ -34,15 +35,16 @@ class SigninScreen extends StatelessWidget {
       ),
     );
   }
-  Widget mainWidget(BuildContext context){
-    return  SingleChildScrollView(
+
+  Widget mainWidget(BuildContext context) {
+    return SingleChildScrollView(
       child: Container(
         color: Colors.white,
         child: Column(
           children: [
             Container(
               height: (MediaQuery.of(context).size.height -
-                  MediaQuery.of(context).padding.top) *
+                      MediaQuery.of(context).padding.top) *
                   0.25,
               padding: EdgeInsets.only(top: 30),
               child: Image.asset('assets/images/logo.webp'),
@@ -63,7 +65,7 @@ class SigninScreen extends StatelessWidget {
                         offset: Offset(2, 17))
                   ]),
               height: (MediaQuery.of(context).size.height -
-                  MediaQuery.of(context).padding.top) *
+                      MediaQuery.of(context).padding.top) *
                   0.78,
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 20),
@@ -71,8 +73,8 @@ class SigninScreen extends StatelessWidget {
                   children: [
                     Container(
                       height: ((MediaQuery.of(context).size.height -
-                          MediaQuery.of(context).padding.top) *
-                          0.78) *
+                                  MediaQuery.of(context).padding.top) *
+                              0.78) *
                           0.85,
                       child: SingleChildScrollView(
                         child: Column(
@@ -118,21 +120,23 @@ class SigninScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               child: ElevatedButton(
+                                onPressed: () {},
                                 child: Text(
                                   'LOGIN',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 16),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
                                 ),
                                 style: ButtonStyle(
                                     foregroundColor:
-                                    MaterialStateProperty.all(Colors.black),
+                                        MaterialStateProperty.all(Colors.black),
                                     backgroundColor: MaterialStateProperty.all(
                                       Color.fromRGBO(247, 185, 0, 1),
                                     ),
                                     shape: MaterialStateProperty.all(
                                         RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(30.0),
-                                        ))),
+                                      borderRadius: BorderRadius.circular(30.0),
+                                    ))),
                               ),
                             ),
                             SizedBox(
@@ -142,8 +146,11 @@ class SigninScreen extends StatelessWidget {
                               width: double.infinity,
                               alignment: Alignment.center,
                               child: TextButton(
-                                child:Text("Skip Now",style: TextStyle(fontWeight: FontWeight.bold)),
-                                onPressed: ()=>navigateToLanguageScreen(context),
+                                child: Text("Skip Now",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
+                                onPressed: () =>
+                                    navigateToLanguageScreen(context),
                               ),
                             ),
                             SizedBox(
@@ -155,8 +162,8 @@ class SigninScreen extends StatelessWidget {
                     ),
                     Container(
                       height: ((MediaQuery.of(context).size.height -
-                          MediaQuery.of(context).padding.top) *
-                          0.78) *
+                                  MediaQuery.of(context).padding.top) *
+                              0.78) *
                           0.07,
                       width: double.infinity,
                       alignment: Alignment.center,
@@ -164,13 +171,13 @@ class SigninScreen extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Already Have an Account?",
+                            "Don't have an account?",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           TextButton(
                               onPressed: () => gotoSignUpPage(context),
                               child: Text(
-                                'Login Now',
+                                'Signup Now',
                                 style: TextStyle(
                                     color: Colors.green,
                                     fontWeight: FontWeight.bold),
@@ -188,14 +195,15 @@ class SigninScreen extends StatelessWidget {
     );
   }
 
-  void gotoSignUpPage(BuildContext ctx){
+  void gotoSignUpPage(BuildContext ctx) {
     Navigator.of(ctx).pushNamed('/');
   }
+
   @override
   Widget build(BuildContext context) {
-    return  MaterialApp(
+    return MaterialApp(
       home: Scaffold(
-        body:mainWidget(context),
+        body: mainWidget(context),
       ),
     );
   }

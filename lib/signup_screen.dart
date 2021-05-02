@@ -1,4 +1,3 @@
-import 'package:designings/signin_screen.dart';
 import 'package:flutter/material.dart';
 
 class SignupForm extends StatelessWidget {
@@ -32,14 +31,17 @@ class SignupForm extends StatelessWidget {
       ),
     );
   }
- void gotologinPage(BuildContext ctx){
+
+  void gotologinPage(BuildContext ctx) {
     Navigator.of(ctx).pushNamed('/signin');
- }
+  }
+
   @override
   Widget build(BuildContext context) {
-    void navigateToLanguageScreen(ctx){
+    void navigateToLanguageScreen(ctx) {
       Navigator.of(ctx).pushNamed('/languageScreen');
     }
+
     return SingleChildScrollView(
       child: Container(
         color: Colors.white,
@@ -139,10 +141,12 @@ class SignupForm extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               child: ElevatedButton(
+                                onPressed: () {},
                                 child: Text(
                                   'SIGNUP',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 16),
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 16),
                                 ),
                                 style: ButtonStyle(
                                     foregroundColor:
@@ -163,8 +167,11 @@ class SignupForm extends StatelessWidget {
                               width: double.infinity,
                               alignment: Alignment.center,
                               child: TextButton(
-                                child:Text("Skip Now",style: TextStyle(fontWeight: FontWeight.bold)),
-                                  onPressed: ()=>navigateToLanguageScreen(context),
+                                child: Text("Skip Now",
+                                    style:
+                                        TextStyle(fontWeight: FontWeight.bold)),
+                                onPressed: () =>
+                                    navigateToLanguageScreen(context),
                               ),
                             ),
                             SizedBox(
@@ -176,8 +183,8 @@ class SignupForm extends StatelessWidget {
                     ),
                     Container(
                       height: ((MediaQuery.of(context).size.height -
-                          MediaQuery.of(context).padding.top) *
-                          0.78) *
+                                  MediaQuery.of(context).padding.top) *
+                              0.78) *
                           0.07,
                       width: double.infinity,
                       alignment: Alignment.center,
@@ -185,11 +192,11 @@ class SignupForm extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Text(
-                            "Already Have an Account?",
+                            "Already Have an account?",
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
                           TextButton(
-                              onPressed: ()=>gotologinPage(context),
+                              onPressed: () => gotologinPage(context),
                               child: Text(
                                 'Login Now',
                                 style: TextStyle(
