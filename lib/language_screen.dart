@@ -1,5 +1,6 @@
-import 'dart:ffi';
 
+import 'package:designings/dummy_data.dart';
+import 'package:designings/logo_screen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:country_provider/country_provider.dart';
@@ -11,11 +12,13 @@ class LanguageScreen extends StatefulWidget {
 }
 
 class _LanguageScreenState extends State<LanguageScreen> {
-  List countryList;
+  List countryList=[];
 
-  Future<Void> getAllCountries() async {
+  Future<void> getAllCountries() async {
+    print('hello');
     List countryLis = await CountryProvider.getAllCountries();
     setState(() {
+      print(countryLis);
       countryList = countryLis;
     });
   }
@@ -25,14 +28,12 @@ class _LanguageScreenState extends State<LanguageScreen> {
     getAllCountries();
     super.initState();
   }
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         backgroundColor: Color.fromRGBO(231, 233, 244, 1),
-        body: countryList != null
-            ? Column(
+        body: Column(
                 children: [
                   Container(
                     padding: EdgeInsets.only(left: 20),
@@ -65,40 +66,36 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     height: (MediaQuery.of(context).size.height) * 0.7,
                     child: GridView(
                       padding: EdgeInsets.all(30),
-                      children: countryList.map((country) {
-                        print(country.languages[0].name);
+                      children: languageData.map((country) {
                         return Container(
                           decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(20)),
+                              borderRadius: BorderRadius.circular(18)),
                           child: Card(
                             elevation: 4,
                             shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(18)),
                             child: Container(
                               padding: EdgeInsets.symmetric(
-                                  vertical: 20, horizontal: 3),
+                                  vertical: 15, horizontal: 3),
                               child: Column(
                                 children: [
                                   Container(
-                                    decoration:
-                                        BoxDecoration(border: Border.all()),
-                                    child: SvgPicture.network(
+                                    child: Image.asset(
                                       country.flag,
-                                      width: 25,
-                                      height: 25,
+                                      width: 40,
+                                      height: 26,
                                     ),
                                   ),
                                   SizedBox(
                                     height: 20,
                                   ),
-                                  FittedBox(
-                                      child: Text(
-                                    country.name,
+                                  Text(
+                                    country.countryName,
                                     style: TextStyle(
-                                        fontSize: 17,
-                                        fontWeight: FontWeight.bold),
-                                  )),
-                                  Text(country.languages[0].name),
+                                    fontSize: 13,
+                                    fontWeight: FontWeight.bold),
+                                  ),
+                                  Text(country.langName),
                                 ],
                               ),
                             ),
@@ -106,7 +103,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                         );
                       }).toList(),
                       gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
-                        mainAxisSpacing: 15,
+                        mainAxisSpacing: 20,
                         maxCrossAxisExtent: 200,
                         crossAxisSpacing: 15,
                         childAspectRatio: 1.2,
@@ -120,6 +117,7 @@ class _LanguageScreenState extends State<LanguageScreen> {
                     padding:
                         EdgeInsets.symmetric(horizontal: 100, vertical: 15),
                     child: ElevatedButton(
+                      onPressed: ()=>{},
                       child: Text('Continue'),
                       style: ButtonStyle(
                           shape: MaterialStateProperty.all(
@@ -129,17 +127,6 @@ class _LanguageScreenState extends State<LanguageScreen> {
                   )
                 ],
               )
-            : Center(
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Container(
-                      height: MediaQuery.of(context).size.height,
-                      child: Image.asset('assets/images/progress.jpg',height: MediaQuery.of(context).size.height,),
-                    ),
-                  ],
-                ),
-              ),
       ),
     );
   }

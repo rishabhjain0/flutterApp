@@ -1,36 +1,43 @@
 import 'package:designings/signup_screen.dart';
+import 'package:designings/logo_screen.dart';
 import 'package:flutter/material.dart';
 
 class SigninScreen extends StatelessWidget {
   void navigateToLanguageScreen(ctx){
-    Navigator.of(ctx).pushNamed('/languageScreen');
+    Navigator.push(ctx,MaterialPageRoute(builder: (ctx){
+      return LogoScreen(navigationRoute: '/languageScreen');
+    }));
   }
-  Widget textStyling1(String label){
-    return  Text(
+  Widget textStyling1(String label) {
+    return Text(
       label,
       style: TextStyle(
-        fontSize: 14,
-        fontWeight: FontWeight.bold,
+        fontSize: 12,
+        fontWeight: FontWeight.normal,
       ),
     );
   }
-  Widget textFieldStyling1(String label){
-    return TextField(
-      decoration: InputDecoration(
-        contentPadding: EdgeInsets.only(left: 30),
-        labelText: label,
-        filled: true,
-        fillColor: Color.fromRGBO(216, 239, 242, 1),
-        labelStyle: TextStyle(
-          color: Colors.grey,
-        ),
-        floatingLabelBehavior: FloatingLabelBehavior.never,
-        border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(30),
+
+  Widget textFieldStyling1(String label) {
+    return Container(
+      height: 44,
+      child: TextField(
+        decoration: InputDecoration(
+          contentPadding: EdgeInsets.only(left: 30),
+          labelText: label,
+          filled: true,
+          fillColor: Color.fromRGBO(235, 241, 244, 1),
+          labelStyle: TextStyle(
+              color: Color.fromRGBO(159, 159, 159, 1)
+          ),
+          floatingLabelBehavior: FloatingLabelBehavior.never,
+          border: OutlineInputBorder(
+            borderRadius: BorderRadius.circular(35),
             borderSide: BorderSide(
-              width: 1,
+              width: 0,
               color: Colors.grey,
-            )),
+            ),),
+        ),
       ),
     );
   }
@@ -41,11 +48,17 @@ class SigninScreen extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: (MediaQuery.of(context).size.height -
-                  MediaQuery.of(context).padding.top) *
-                  0.25,
-              padding: EdgeInsets.only(top: 30),
-              child: Image.asset('assets/images/logo.webp'),
+              height: (MediaQuery.of(context).size.height)*
+                  0.30,
+              padding: EdgeInsets.only(top: 0),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Image.asset('assets/images/mainLog.png',width: 76,height: 85,),
+                  Text('Quiz Patente',style: TextStyle(fontSize: 20,fontWeight:FontWeight.w700,),),
+                  Text('Per Tutti',style: TextStyle(fontWeight: FontWeight.w500,fontSize: 16),)
+                ],
+              ),
             ),
             Container(
               width: double.infinity,
@@ -62,17 +75,15 @@ class SigninScreen extends StatelessWidget {
                         spreadRadius: 10,
                         offset: Offset(2, 17))
                   ]),
-              height: (MediaQuery.of(context).size.height -
-                  MediaQuery.of(context).padding.top) *
-                  0.78,
+              height: (MediaQuery.of(context).size.height) *
+                  0.70,
               child: Container(
                 margin: EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
                     Container(
-                      height: ((MediaQuery.of(context).size.height -
-                          MediaQuery.of(context).padding.top) *
-                          0.78) *
+                      height: ((MediaQuery.of(context).size.height) *
+                          0.70) *
                           0.85,
                       child: SingleChildScrollView(
                         child: Column(
@@ -81,15 +92,17 @@ class SigninScreen extends StatelessWidget {
                             Text(
                               'LOGIN  ACCOUNT',
                               style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w900,
+                                fontSize: 25,
+                                fontWeight: FontWeight.w800,
+                                letterSpacing: 0.64,
+                                color: Color.fromRGBO(29, 29, 29, 1),
                               ),
                             ),
                             Text(
                               'Login your account to get started',
                               style: TextStyle(
                                 fontSize: 14,
-                                color: Colors.grey,
+                                color: Color.fromRGBO(29, 29, 29, 1),
                               ),
                             ),
                             SizedBox(
@@ -113,21 +126,22 @@ class SigninScreen extends StatelessWidget {
                             ),
                             Container(
                               width: double.infinity,
-                              height: 45,
+                              height: 48,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30),
                               ),
                               child: ElevatedButton(
+                                onPressed: ()=>{},
                                 child: Text(
-                                  'LOGIN',
+                                  'SIGNUP',
                                   style: TextStyle(
-                                      fontWeight: FontWeight.bold, fontSize: 16),
+                                      fontWeight: FontWeight.bold, fontSize: 18),
                                 ),
                                 style: ButtonStyle(
                                     foregroundColor:
                                     MaterialStateProperty.all(Colors.black),
                                     backgroundColor: MaterialStateProperty.all(
-                                      Color.fromRGBO(247, 185, 0, 1),
+                                      Color.fromRGBO(252, 215, 112, 1),
                                     ),
                                     shape: MaterialStateProperty.all(
                                         RoundedRectangleBorder(
@@ -170,7 +184,7 @@ class SigninScreen extends StatelessWidget {
                           TextButton(
                               onPressed: () => gotoSignUpPage(context),
                               child: Text(
-                                'Login Now',
+                                'Signup Now',
                                 style: TextStyle(
                                     color: Colors.green,
                                     fontWeight: FontWeight.bold),
