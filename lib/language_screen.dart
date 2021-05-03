@@ -1,30 +1,18 @@
 import 'package:designings/dummy_data.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:country_provider/country_provider.dart';
+import 'package:provider/provider.dart';
+
+import 'providers/auth.dart';
 
 class LanguageScreen extends StatefulWidget {
+  static const route = '/languageScreen';
   @override
   _LanguageScreenState createState() => _LanguageScreenState();
 }
 
 class _LanguageScreenState extends State<LanguageScreen> {
   List countryList = [];
-
-  Future<void> getAllCountries() async {
-    print('hello');
-    List countryLis = await CountryProvider.getAllCountries();
-    setState(() {
-      print(countryLis);
-      countryList = countryLis;
-    });
-  }
-
-  @override
-  void initState() {
-    getAllCountries();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -113,7 +101,11 @@ class _LanguageScreenState extends State<LanguageScreen> {
                 width: double.infinity,
                 padding: EdgeInsets.symmetric(horizontal: 100, vertical: 15),
                 child: ElevatedButton(
-                  onPressed: () => {},
+                  onPressed: () {
+                    Provider.of<Auth>(context, listen: false).logout();
+                    Navigator.pushNamedAndRemoveUntil(
+                        context, '/', (route) => false);
+                  },
                   child: Text('Continue'),
                   style: ButtonStyle(
                       shape: MaterialStateProperty.all(RoundedRectangleBorder(
