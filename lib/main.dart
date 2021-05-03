@@ -1,4 +1,5 @@
 import 'package:designings/language_screen.dart';
+import 'package:designings/logo_screen.dart';
 import 'package:designings/signin_screen.dart';
 
 import './signup_screen.dart';
@@ -19,11 +20,12 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-          body: SignupForm(),
+          body: LogoScreen(navigationRoute: '/signupRoute'),
       ),
       initialRoute: '/',
       routes: {
         '/signin':(context)=>SigninScreen(),
+        '/signupRoute': (context)=>SignupForm(),
         '/languageScreen':(context)=>LanguageScreen(),
       },
     );
